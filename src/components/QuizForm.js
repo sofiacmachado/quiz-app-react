@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function QuizForm({setApiURL}) {
 
+    const navigate = useNavigate();
+
     const [loading, setLoading] = useState(false);
     const [options, setOptions] = useState(null);
-    const [category, setCategory] = useState("multiple choice");
+    const [category, setCategory] = useState("");
     const [difficulty, setDifficulty] = useState("easy");
-    const [type, setType] = useState("");
+    const [type, setType] = useState("multiple");
     const [number, setNumber] = useState(20);
 
     useEffect(() => {
@@ -46,10 +48,9 @@ export default function QuizForm({setApiURL}) {
             console.log(value);
         }
 
-        function submitData(e) {
-            e.preventDefault();
-            setApiURL(`https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${difficulty}&type=${type}`); 
-            Navigate('/quiz-game');
+        function submitData() {
+            setApiURL(`https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${difficulty}&type=${type}`);
+            navigate('/quiz-game');
         }
     
     if (!loading) {
@@ -82,8 +83,8 @@ export default function QuizForm({setApiURL}) {
                         <div className="form-group">
                             <label htmlFor="type-select">Question Type</label>
                             <select className="form-control" id="type-select" value={type} onChange={handleTypeChange}>
-                                <option value="multiple choice" key="type-0">Multiple Choice</option>
-                                <option value="true or false" key="type-1">True or False</option>
+                                <option value="multiple" key="type-0">Multiple Choice</option>
+                                <option value="boolean" key="type-1">True or False</option>
                             </select>
                         </div>
 

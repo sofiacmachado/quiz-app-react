@@ -1,21 +1,21 @@
 import QuizForm from './components/QuizForm';
 import QuizGame from './components/QuizGame';
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useCallback } from 'react';
 import './App.css';
 
 function App() {
 
   const [apiURL, setApiURL] = useState(``);
-  const callBack = useCallback((x) => {setApiURL(x)}, [setApiURL]);  
+  const callBack = useCallback((x) => {setApiURL(x); console.log(x)}, [setApiURL]);  
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<QuizForm apiURL={apiURL} setApiURL={callBack} />} />
+        <Route path="/" element={<QuizForm setApiURL={callBack} />} />
         <Route path="/quiz-game" element={<QuizGame apiURL={apiURL} />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
