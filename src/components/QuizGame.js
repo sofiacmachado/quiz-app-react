@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOMServer from 'react-dom/server';
+import {decode as atob} from 'base-64'
 
 export default function QuizGame({apiURL , number}) {
     
@@ -10,6 +11,8 @@ export default function QuizGame({apiURL , number}) {
     const [correctAnswerId, setCorrectAnswerId] = useState(0);
     const [score, setScore] = useState(0);
     
+    
+
     function checkAnswer(e, id) {
       console.log('clicked');
       if (e.target.id == correctAnswerId) {
@@ -52,9 +55,9 @@ export default function QuizGame({apiURL , number}) {
         (
           <>
             <h2>Question {questionIndex + 1}</h2>
-            <h4 id="question" dangerouslySetInnerHTML={{__html: dataQuestions[questionIndex].question}}></h4>
-            <ul className="answers" dangerouslySetInnerHTML={{__html: ReactDOMServer.renderToString(answerOptions.map((answer, id) => (<li><button type="button" key={id} onClick={(e) => checkAnswer(e, id)}>{answer}</button></li>)))}}>
-              
+            <h4 id="question">{atob(dataQuestions[questionIndex].question)}</h4>
+            <ul className="answers">
+              {answerOptions.map((answer, id) => (<li><button type="button" key={id} onClick={(e) => checkAnswer(e, id)}>{atob(answer)}</button></li>))}
             </ul>
             <div>
               <p>Score: {score}/{number}</p>
