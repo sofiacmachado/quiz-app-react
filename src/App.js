@@ -7,13 +7,15 @@ import './App.css';
 function App() {
 
   const [apiURL, setApiURL] = useState(``);
-  const callBack = useCallback((x) => {setApiURL(x); console.log(x)}, [setApiURL]);  
+  const [number, setNumber] = useState(20);
+  const callBackAPI = useCallback((x) => {setApiURL(x); console.log(x)}, [setApiURL]);  
+  const callBackNumber = useCallback((x) => {setNumber(x); console.log(x)}, [setNumber]);  
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<QuizForm setApiURL={callBack} />} />
-        <Route path="/quiz-game" element={<QuizGame apiURL={apiURL} />} />
+        <Route path="/" element={<QuizForm setApiURL={callBackAPI} number={number} setNumber={callBackNumber} />} />
+        <Route path="/quiz-game" element={<QuizGame apiURL={apiURL} number={number} />} />
       </Routes>
     </BrowserRouter>
   );

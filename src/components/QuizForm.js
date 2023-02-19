@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function QuizForm({setApiURL}) {
+export default function QuizForm({setApiURL, number, setNumber}) {
 
     const navigate = useNavigate();
 
@@ -10,7 +10,6 @@ export default function QuizForm({setApiURL}) {
     const [category, setCategory] = useState("");
     const [difficulty, setDifficulty] = useState("easy");
     const [type, setType] = useState("multiple");
-    const [number, setNumber] = useState(20);
 
     useEffect(() => {
         const apiCategoryURL = `https://opentdb.com/api_category.php`;
