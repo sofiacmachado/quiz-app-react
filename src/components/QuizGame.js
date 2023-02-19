@@ -11,19 +11,6 @@ export default function QuizGame({apiURL , number}) {
     const [correctAnswerId, setCorrectAnswerId] = useState(0);
     const [score, setScore] = useState(0);
     
-    
-
-    function checkAnswer(e, id) {
-      console.log('clicked');
-      if (e.target.id == correctAnswerId) {
-        console.log('correct');
-        setScore(score + 1);
-        questionIndex += 1;
-      } else {
-        console.log('keep trying');
-      }
-    }
-    
     //fetch Trivia API URL
     useEffect(() => {
       setLoading(true);
@@ -36,18 +23,38 @@ export default function QuizGame({apiURL , number}) {
         })
       }, []);
       
-    //wait for dataQuestion to print answers
-    useEffect(() => {
-      if (dataQuestions.length > 0) {
-        let answersList = dataQuestions[questionIndex].incorrect_answers;
-        let randomID = Math.floor(Math.random() * answerOptions.length);
-        setCorrectAnswerId(randomID);
-        answersList.splice(correctAnswerId, 0, dataQuestions[questionIndex].correct_answer);
-        setAnswerOptions(answersList);
-      } else {
-        setAnswerOptions([]);
+      //print answers
+      function printAnswers(i) {
+        if (dataQuestions.length > 0) {
+          setAnswerOptions([]);
+          let answersList = dataQuestions[i].incorrect_answers;
+          let randomID = Math.floor(Math.random() * (answersList.length + 1));
+          setCorrectAnswerId(randomID);
+          answersList.splice(randomID, 0, dataQuestions[i].correct_answer);
+          setAnswerOptions(answersList);
+        } else {
+          setAnswerOptions([]);
+        }
       }
-    }, [dataQuestions]);
+      
+      //wait for dataQuestion to print answers
+      useEffect(() => {
+        printAnswers(questionIndex);
+      }, [dataQuestions]);
+
+      //select answer
+      function checkAnswer(i) {
+        console.log('clicked', i);
+        if (i == (correctAnswerId)) {
+          console.log('correct');
+          setScore(score + 1);
+          const index = questionIndex + 1;
+          setQuestionIndex(index);
+          printAnswers(index);
+        } else {
+          
+        }
+      }
 
       return (
         <>
@@ -57,7 +64,7 @@ export default function QuizGame({apiURL , number}) {
             <h2>Question {questionIndex + 1}</h2>
             <h4 id="question">{atob(dataQuestions[questionIndex].question)}</h4>
             <ul className="answers">
-              {answerOptions.map((answer, id) => (<li><button type="button" key={id} onClick={(e) => checkAnswer(e, id)}>{atob(answer)}</button></li>))}
+              {answerOptions.map((answer, i) => (<li><button type="button" key={i} onClick={() => checkAnswer(i)}>{atob(answer)}</button></li>))}
             </ul>
             <div>
               <p>Score: {score}/{number}</p>
