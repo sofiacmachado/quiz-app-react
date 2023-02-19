@@ -48,7 +48,7 @@ export default function QuizForm({setApiURL, number, setNumber}) {
         }
 
         function submitData() {
-            setApiURL(`https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${difficulty}&type=${type}`);
+            setApiURL(`https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${difficulty}&type=${type}&encode=base64`);
             navigate('/quiz-game');
         }
     
