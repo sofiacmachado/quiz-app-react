@@ -1,9 +1,10 @@
 import QuizForm from './components/QuizForm';
 import QuizGame from './components/QuizGame';
 import FinalScore from './components/FinalScore';
+import QuizMenu from './components/QuizMenu';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useCallback } from 'react';
-import './App.css';
+import './App.scss';
 
 function App() {
 
