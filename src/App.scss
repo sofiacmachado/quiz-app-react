@@ -41,12 +41,14 @@
 }
 
 
-/* Hero Section */
+
+/* Quiz Menu */
 
 .container {
   margin-top: 100px;
 }
 
+/* Hero Section */
 .hero-section {
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -91,4 +93,49 @@
   text-transform: uppercase;
   font-weight: 600;
   width: fit-content;
+}
+
+/* Question Example Section */
+
+
+.example-section {
+  height: 330px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.text-example {
+  text-align: center;
+  font-family: $text-font;
+  color: $emphasis-blue;
+}
+
+.text-example h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.text-example h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 3rem;
+}
+
+.question-example {
+  display: flex;
+  justify-content: space-around;
+}
+
+.question-block {
+  background-color: $empahsis-red;
+  color: $background-color;
+  font-family: $text-font;
+  padding: 1rem;
+  width: 280px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
