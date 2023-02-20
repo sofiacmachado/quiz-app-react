@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOMServer from 'react-dom/server';
 import {decode as atob} from 'base-64'
 
-export default function QuizGame({apiURL , number}) {
+export default function QuizGame({apiURL , number, score, questionIndex, setScore, setQuestionIndex}) {
     
     const [loading, setLoading] = useState(true);
     const [dataQuestions, setDataQuestions] = useState([]);
-    const [questionIndex, setQuestionIndex] = useState(0);
     const [answerOptions, setAnswerOptions] = useState([]);
     const [correctAnswerId, setCorrectAnswerId] = useState(0);
-    const [score, setScore] = useState(0);
     
     //fetch Trivia API URL
     useEffect(() => {
@@ -25,16 +22,17 @@ export default function QuizGame({apiURL , number}) {
       
       //print answers
       function printAnswers(i) {
-        if (dataQuestions.length > 0) {
-          setAnswerOptions([]);
-          let answersList = dataQuestions[i].incorrect_answers;
-          let randomID = Math.floor(Math.random() * (answersList.length + 1));
-          setCorrectAnswerId(randomID);
-          answersList.splice(randomID, 0, dataQuestions[i].correct_answer);
-          setAnswerOptions(answersList);
-        } else {
-          setAnswerOptions([]);
-        }
+        
+          if (dataQuestions.length > 0) {
+            setAnswerOptions([]);
+            let answersList = dataQuestions[i].incorrect_answers;
+            let randomID = Math.floor(Math.random() * (answersList.length + 1));
+            setCorrectAnswerId(randomID);
+            answersList.splice(randomID, 0, dataQuestions[i].correct_answer);
+            setAnswerOptions(answersList);
+          } else {
+            setAnswerOptions([]);
+          } 
       }
       
       //wait for dataQuestion to print answers
@@ -51,10 +49,20 @@ export default function QuizGame({apiURL , number}) {
           const index = questionIndex + 1;
           setQuestionIndex(index);
           printAnswers(index);
-        } else {
           
+        } else {
+          console.log('incorrect');
+          const index = questionIndex + 1;
+          setQuestionIndex(index);
+          printAnswers(index);
         }
       }
+    
+
+    /* Será que consigo passar esta função atraveés de componentes na app
+    - Um componente com !dataQuestions para o QuizGame
+    - Um componente com dataquestions
+    */
 
       return (
         <>
