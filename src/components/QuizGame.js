@@ -64,23 +64,25 @@ export default function QuizGame({apiURL , number, score, questionIndex, setScor
     - Um componente com dataquestions
     */
 
-      return (
-        <>
+    return (
+      <>
         {!loading ? 
-        (
-          <>
-            <h2>Question {questionIndex + 1}</h2>
-            <h4 id="question">{atob(dataQuestions[questionIndex].question)}</h4>
-            <ul className="answers">
-              {answerOptions.map((answer, i) => (<li><button type="button" key={i} onClick={() => checkAnswer(i)}>{atob(answer)}</button></li>))}
-            </ul>
-            <div>
-              <p>Score: {score}/{number}</p>
+          (
+            <div className="container">
+              <div className="question-game">
+                <h5>Question {questionIndex + 1}</h5>
+                <h4 id="question">{atob(dataQuestions[questionIndex].question)}</h4>
+                <ul className="answers-list">
+                  {answerOptions.map((answer, i) => (<li className='answers-list-item'><button className="btn btn-light btn-answers" type="button" key={i} onClick={() => checkAnswer(i)}>{atob(answer)}</button></li>))}
+                </ul>
+                <div className="score">
+                  <p>Score: {score}/{number}</p>
+                </div>
+              </div>
             </div>
-          </>
-        ) : (
-          <p>Loading...</p>
-        )
+          ) : (
+            <p>Loading...</p>
+          )
         }
       </>
     )

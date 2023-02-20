@@ -150,18 +150,77 @@
 
 .api-form {
   background-color: $emphasis-red;
-  padding-left: 5rem;
-  padding-right: 5rem;
-  
+  padding: 5rem;
   display: grid;
   justify-content: center;
 }
 
+.api-form h2 {
+  color: $text-color-light;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
 .form-group, label {
   font-family: $text-font;
-  color: $text-color-dark;
+  color: $text-color-light;
 }
 
 .form-group {
   width: 100%;
+}
+
+.form-group:last-of-type {
+  margin-bottom: 3rem;
+}
+
+.form-control:focus {
+  border-color: $background-color;
+  box-shadow: 0 0 0 .2rem rgba(253, 228, 173, 0.493);
+}
+
+
+/* Question */
+
+.question-game {
+  padding: 5rem;
+  background-color: $emphasis-red;
+  font-family: $text-font;
+  text-align: center;
+}
+
+.question-game h5 {
+  font-family: $title-font;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: $emphasis-blue;
+}
+
+.question-game h4 {
+  font-family: $text-font;
+  margin-bottom: 2.5rem;
+  color: $text-color-light;
+  font-weight: 500;
+  font-size: 1.7rem;
+}
+
+.answers-list {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.btn-answers {
+  width: 300px;
+  margin-bottom: 0.8rem;
+  background-color: $background-color;
+  border: none;
+  border-radius: 25px;
+}
+
+.score {
+  font-size: 1rem;
+  color: $emphasis-blue;
+  font-weight: 700;
 }
