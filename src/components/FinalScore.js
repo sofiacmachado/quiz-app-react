@@ -12,6 +12,9 @@ export default function FinalScore({number, score, setScore, questionIndex, setQ
     })
 
     return (
-        <div>Final Score</div>
+        <>
+            <div>Final Score</div>
+            <button className="btn btn-light btn-quiz">Play Again</button>
+        </>
     )
 }

@@ -57,6 +57,7 @@ export default function QuizForm({setApiURL, number, setNumber}) {
             <div className="quiz-app-container">
                 <div className="container">
                     <form className="api-form" onSubmit={submitData}>
+                        <h2>Create Your Quizz</h2>
                         <div className="form-group">
                             <label htmlFor="difficulty-select">Difficulty</label>
                             <select className="form-control" id="difficulty-select" value={difficulty} onChange={handleDifficultyChange}>
@@ -91,7 +92,7 @@ export default function QuizForm({setApiURL, number, setNumber}) {
                             <label htmlFor="number-select">Number of Questions</label>
                             <input className="form-control" id="number-select" type="number" min="10" max="50" value={number} onChange={handleNumberChange} />
                         </div>
-                        <button className="btn btn-success" type="submit">Let the games begin!</button>
+                        <button className="btn btn-light btn-quiz" type="submit">Let the games begin!</button>
                     </form>
                 </div>
             </div>

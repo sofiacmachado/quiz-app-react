@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import heroBackground from '../assets/images/hero_section_quiz.svg';
 import {decode as atob} from 'base-64';
 
-export default function QuizMenu() {
+export default function QuizMenu({setSettings}) {
     
     const [loading, setLoading] = useState(true);
     const [question, setQuestion] = useState([]);
@@ -28,7 +28,7 @@ export default function QuizMenu() {
                     <div className="hero-text">
                         <h5>Do you know the answer to these trivia questions?</h5>
                         <h1>Are you sure?</h1>
-                        <button className="btn btn-light">Challenge yourself</button>
+                        <button onClick={() => setSettings(true)} className="btn btn-light  btn-quiz">Challenge yourself</button>
                     </div>
                 </section>
                 <section className="example-section">

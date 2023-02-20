@@ -24,7 +24,7 @@ function App() {
   if (settings) {
     initialComponent = <QuizForm setApiURL={callBackAPI} number={number} setNumber={callBackNumber} />;
   } else {
-    initialComponent = <QuizMenu settings={settings} setSettings={callBackSettings} />;
+    initialComponent = <QuizMenu setSettings={callBackSettings} />;
   }
   let gameComponent;
   if (questionIndex >= number) {

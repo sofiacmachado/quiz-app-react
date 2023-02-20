@@ -83,7 +83,7 @@
   justify-content: center;
 }
 
-.hero-text button {
+.btn-quiz {
   color: $emphasis-blue;
   background-color: $background-color;
   border-radius: 25px;
@@ -95,13 +95,18 @@
   width: fit-content;
 }
 
+.btn-quiz:hover {
+  color: $text-color-light;
+  background-color: $emphasis-blue;
+}
+
 /* Question Example Section */
 
 
 .example-section {
   height: 330px;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
 .text-example {
@@ -128,9 +133,10 @@
 }
 
 .question-block {
-  background-color: $empahsis-red;
-  color: $background-color;
+  background-color: $emphasis-red;
+  color: $text-color-light;
   font-family: $text-font;
+  font-weight: 500;
   padding: 1rem;
   width: 280px;
   border-radius: 20px;
@@ -138,4 +144,24 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+/* Form */
+
+.api-form {
+  background-color: $emphasis-red;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  
+  display: grid;
+  justify-content: center;
+}
+
+.form-group, label {
+  font-family: $text-font;
+  color: $text-color-dark;
+}
+
+.form-group {
+  width: 100%;
 }
