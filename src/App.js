@@ -1,6 +1,5 @@
 import QuizForm from './components/QuizForm';
 import QuizGame from './components/QuizGame';
-import FinalScore from './components/FinalScore';
 import QuizMenu from './components/QuizMenu';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useCallback } from 'react';
@@ -26,18 +25,18 @@ function App() {
   } else {
     initialComponent = <QuizMenu setSettings={callBackSettings} />;
   }
-  let gameComponent;
-  if (questionIndex >= number) {
+ /*  let gameComponent;
+  if (questionIndex == 0) {
     gameComponent = <FinalScore number={number} score={score} questionIndex={questionIndex} setQuestionIndex={callBackQuestionIndex} />;
   } else {
     gameComponent = <QuizGame apiURL={apiURL} number={number} score={score} setScore={callBackScore} questionIndex={questionIndex} setQuestionIndex={callBackQuestionIndex} />;
-  }
+  } */
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={initialComponent} />
-        <Route path="/quiz-game" element={gameComponent} />
+        <Route path="/quiz-game" element={<QuizGame apiURL={apiURL} setApiURL={callBackAPI} setSettings={callBackSettings} number={number} score={score} setScore={callBackScore} questionIndex={questionIndex} setQuestionIndex={callBackQuestionIndex} />} />
       </Routes>
     </BrowserRouter>
   );

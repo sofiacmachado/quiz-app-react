@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import {decode as atob} from 'base-64'
+import { useNavigate } from "react-router-dom";
 
-export default function QuizGame({apiURL , number, score, questionIndex, setScore, setQuestionIndex}) {
-    
-    const [loading, setLoading] = useState(true);
-    const [dataQuestions, setDataQuestions] = useState([]);
-    const [answerOptions, setAnswerOptions] = useState([]);
-    const [correctAnswerId, setCorrectAnswerId] = useState(0);
-    const [selectedAnswer, setSelectedAnswer] = useState(false);
+export default function QuizGame({apiURL, setApiURL, setSettings, number, score, questionIndex, setScore, setQuestionIndex}) {
+  
+  const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(true);
+  const [dataQuestions, setDataQuestions] = useState([]);
+  const [answerOptions, setAnswerOptions] = useState([]);
+  const [correctAnswerId, setCorrectAnswerId] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState(false);
+  
     const answerBtn = document.getElementById(`answer-${correctAnswerId}`);
     
     //fetch Trivia API URL
@@ -58,7 +61,7 @@ export default function QuizGame({apiURL , number, score, questionIndex, setScor
             setQuestionIndex(index);
             printAnswers(index);   
             setSelectedAnswer(false);
-          }, 1000)
+          }, 0)
         } else {
           console.log(answerBtn);
           //light up answers
@@ -72,15 +75,42 @@ export default function QuizGame({apiURL , number, score, questionIndex, setScor
             e.target.classList.remove('incorrect-answer');
             answerBtn.classList.remove("correct-answer");
             setSelectedAnswer(false);
-          }, 1000)
+          }, 0)
         }
       }
     
+      //Play again
+      function playAgain() {
+        setSettings(false);
+        setScore(0);
+        setDataQuestions([]);
+        setCorrectAnswerId(0);
+        setQuestionIndex(0);
+        setApiURL(``);
+        navigate('/');
+      }
+      
     return (
       <>
         {!loading ? 
           (
             <div className="container">
+              {/* Final Score */}
+              {questionIndex >= number ?
+              (
+                <div className="final-page">
+                  <h2>Final Score</h2>
+                  <div className='final-score'>
+                    <h3 className='score-h3'>{score}</h3>
+                    <h4>out of</h4>
+                    <h3>{number} questions</h3>
+                  </div>
+                  <button onClick={playAgain} className="btn btn-light btn-quiz">Play Again</button>
+                </div>
+              )
+            :
+            /* Game Quiz */
+            (
               <div className="question-game">
                 <h5>Question {questionIndex + 1}</h5>
                 <h4 id="question">{atob(dataQuestions[questionIndex].question)}</h4>
@@ -91,6 +121,7 @@ export default function QuizGame({apiURL , number, score, questionIndex, setScor
                   <p>Score: {score}/{number}</p>
                 </div>
               </div>
+            )}
             </div>
           ) : (
             <p>Loading...</p>

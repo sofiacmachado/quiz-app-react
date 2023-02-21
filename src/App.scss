@@ -184,7 +184,8 @@
 
 /* Question */
 
-.question-game {
+.question-game,
+.final-page {
   padding: 5rem;
   background-color: $emphasis-red;
   font-family: $text-font;
@@ -221,9 +222,10 @@
 }
 
 .score {
-  font-size: 1rem;
+  font-size: 2.5rem;
   color: $emphasis-blue;
-  font-weight: 700;
+  font-weight: 200;
+  font-family: $title-font;
 }
 
 .correct-answer.btn {
@@ -255,4 +257,27 @@
   background-color: rgb(216, 35, 35);
   color: $text-color-light;
   box-shadow: none;
+}
+
+/* Final Page */
+
+.final-page h2 {
+  font-family: $text-font;
+  margin-bottom: 2.5rem;
+  color: $text-color-light;
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+
+.final-score {
+  color: $emphasis-blue;
+  font-family: $title-font;
+  padding-bottom: 4rem;
+  padding-top: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.score-h3 {
+  font-size: 4rem;
 }
