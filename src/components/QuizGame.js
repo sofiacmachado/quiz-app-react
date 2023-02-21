@@ -7,6 +7,7 @@ export default function QuizGame({apiURL , number, score, questionIndex, setScor
     const [dataQuestions, setDataQuestions] = useState([]);
     const [answerOptions, setAnswerOptions] = useState([]);
     const [correctAnswerId, setCorrectAnswerId] = useState(0);
+    const [selectedAnswer, setSelectedAnswer] = useState(false);
     
     //fetch Trivia API URL
     useEffect(() => {
@@ -22,7 +23,6 @@ export default function QuizGame({apiURL , number, score, questionIndex, setScor
       
       //print answers
       function printAnswers(i) {
-        
           if (dataQuestions.length > 0) {
             setAnswerOptions([]);
             let answersList = dataQuestions[i].incorrect_answers;
@@ -41,29 +41,30 @@ export default function QuizGame({apiURL , number, score, questionIndex, setScor
       }, [dataQuestions]);
 
       //select answer
-      function checkAnswer(i) {
+      function checkAnswer(e, i) {
         console.log('clicked', i);
         if (i == (correctAnswerId)) {
+          e.target.classList.add('correct-answer');
           console.log('correct');
           setScore(score + 1);
-          const index = questionIndex + 1;
-          setQuestionIndex(index);
-          printAnswers(index);
-          
+          setTimeout(() => {
+            e.target.classList.remove('correct-answer');
+            const index = questionIndex + 1;
+            setQuestionIndex(index);
+            printAnswers(index);    
+          }, 1000)
         } else {
+          e.target.classList.add('incorrect-answer');
           console.log('incorrect');
-          const index = questionIndex + 1;
-          setQuestionIndex(index);
-          printAnswers(index);
+          setTimeout(() => {
+            const index = questionIndex + 1;
+            setQuestionIndex(index);
+            printAnswers(index);
+            e.target.classList.remove('incorrect-answer');
+          }, 1000)
         }
       }
     
-
-    /* Será que consigo passar esta função atraveés de componentes na app
-    - Um componente com !dataQuestions para o QuizGame
-    - Um componente com dataquestions
-    */
-
     return (
       <>
         {!loading ? 
@@ -73,7 +74,7 @@ export default function QuizGame({apiURL , number, score, questionIndex, setScor
                 <h5>Question {questionIndex + 1}</h5>
                 <h4 id="question">{atob(dataQuestions[questionIndex].question)}</h4>
                 <ul className="answers-list">
-                  {answerOptions.map((answer, i) => (<li className='answers-list-item'><button className="btn btn-light btn-answers" type="button" key={i} onClick={() => checkAnswer(i)}>{atob(answer)}</button></li>))}
+                  {answerOptions.map((answer, i) => (<li className='answers-list-item'><button className="btn btn-answers" id="answer-btn" type="button" key={i} onClick={(e) => checkAnswer(e, i)}>{atob(answer)}</button></li>))}
                 </ul>
                 <div className="score">
                   <p>Score: {score}/{number}</p>
