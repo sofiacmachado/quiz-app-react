@@ -226,12 +226,33 @@
   font-weight: 700;
 }
 
-.correct-answer {
+.correct-answer.btn {
   background-color: green;
   color: $text-color-light;
 }
-
-.incorrect-answer {
+.incorrect-answer.btn {
   background-color: rgb(216, 35, 35);
   color: $text-color-light;
+}
+
+.btn.btn-answers:hover {
+  border-color: $background-color;
+  box-shadow: 0 0 0 .2rem rgba(253, 228, 173, 0.493);
+}
+
+.btn.btn-answers {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.btn.correct-answer:hover {
+  background-color: green;
+  color: $text-color-light;
+  box-shadow: none;
+}
+.btn.incorrect-answer:hover {
+  background-color: rgb(216, 35, 35);
+  color: $text-color-light;
+  box-shadow: none;
 }

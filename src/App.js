@@ -10,7 +10,7 @@ function App() {
 
   const [settings, setSettings] = useState(false);
   const [apiURL, setApiURL] = useState(``);
-  const [number, setNumber] = useState(20);
+  const [number, setNumber] = useState(10);
   const [score, setScore] = useState(0);
   const [questionIndex, setQuestionIndex] = useState(0);
   const callBackSettings = useCallback((x) => {setSettings(x)}, [setSettings]);  

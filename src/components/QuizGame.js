@@ -9,7 +9,7 @@ export default function QuizGame({apiURL , number, score, questionIndex, setScor
     const [correctAnswerId, setCorrectAnswerId] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(false);
 
-    const answerBtn = document.querySelector('#answer-btn');
+    const answerBtn = document.getElementById(`answer-${correctAnswerId}`);
     
     //fetch Trivia API URL
     useEffect(() => {
@@ -44,9 +44,11 @@ export default function QuizGame({apiURL , number, score, questionIndex, setScor
 
       //select answer
       function checkAnswer(e, i) {
+        e.preventDefault();
         setSelectedAnswer(true);
         console.log('clicked', i);
         if (i == (correctAnswerId)) {
+          //light up answer
           e.target.classList.add('correct-answer');
           console.log('correct');
           setScore(score + 1);
@@ -58,13 +60,17 @@ export default function QuizGame({apiURL , number, score, questionIndex, setScor
             setSelectedAnswer(false);
           }, 1000)
         } else {
+          console.log(answerBtn);
+          //light up answers
           e.target.classList.add('incorrect-answer');
+          answerBtn.classList.add("correct-answer");
           console.log('incorrect');
           setTimeout(() => {
             const index = questionIndex + 1;
             setQuestionIndex(index);
             printAnswers(index);
             e.target.classList.remove('incorrect-answer');
+            answerBtn.classList.remove("correct-answer");
             setSelectedAnswer(false);
           }, 1000)
         }
@@ -79,7 +85,7 @@ export default function QuizGame({apiURL , number, score, questionIndex, setScor
                 <h5>Question {questionIndex + 1}</h5>
                 <h4 id="question">{atob(dataQuestions[questionIndex].question)}</h4>
                 <ul className="answers-list">
-                  {answerOptions.map((answer, i) => (<li className='answers-list-item'><button disabled={selectedAnswer} className="btn btn-answers" id="answer-btn" type="button" key={i} onClick={(e) => checkAnswer(e, i)}>{atob(answer)}</button></li>))}
+                  {answerOptions.map((answer, i) => (<li className='answers-list-item'><button disabled={selectedAnswer} className="btn btn-answers" id={`answer-${i}`} type="button" key={i} onClick={(e) => checkAnswer(e, i)}>{atob(answer)}</button></li>))}
                 </ul>
                 <div className="score">
                   <p>Score: {score}/{number}</p>
