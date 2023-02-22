@@ -98,6 +98,8 @@ export default function QuizForm({setApiURL, number, setNumber}) {
             </div>
             );
         } else {
-            <p>Loading...</p>
+            <div className="container">
+                <p className='loading'>Loading...</p>
+            </div>
         }
 }

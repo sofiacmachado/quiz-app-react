@@ -28,7 +28,7 @@ export default function QuizMenu({setSettings}) {
                     <div className="hero-text">
                         <h5>Do you know the answer to these trivia questions?</h5>
                         <h1>Are you sure?</h1>
-                        <button onClick={() => setSettings(true)} className="btn btn-light  btn-quiz">Challenge yourself</button>
+                        <button onClick={() => setSettings(true)} className="btn btn-light btn-play btn-quiz">Challenge yourself</button>
                     </div>
                 </section>
                 <section className="example-section">
@@ -45,7 +45,9 @@ export default function QuizMenu({setSettings}) {
             </div>
             )
             :
-            (<p>Loading</p>)
+            (<div className="container">
+                <p className='loading'>Loading...</p>
+            </div>)
         )
     )
 }

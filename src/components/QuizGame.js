@@ -126,7 +126,9 @@ export default function QuizGame({apiURL, setApiURL, setSettings, number, score,
             )}
             </div>
           ) : (
-            <p>Loading...</p>
+            <div className="container">
+                <p className='loading'>Loading...</p>
+            </div>
           )
         }
       </>
