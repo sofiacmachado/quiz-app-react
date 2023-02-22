@@ -22,7 +22,7 @@ export default function QuizForm({setApiURL, number, setNumber}) {
                 setLoading(false);
                 setOptions(data.trivia_categories);
             });
-        }, [setOptions]);
+        }, []);
 
         const handleCategoryChange = (e) => {
             setCategory(e.target.value);

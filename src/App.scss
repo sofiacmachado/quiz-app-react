@@ -144,6 +144,38 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  opacity: 0;
+  animation: boing 750ms ease-in-out forwards;
+}
+#question-b-1 {
+  animation-delay: 550ms;
+}
+#question-b-2 {
+  animation-delay: 500ms;
+}
+#question-b-3 {
+  animation-delay: 650ms;
+}
+
+@keyframes boing {
+  15%, 40%, 75%, 100% {
+      transform-origin: center center;
+  }
+  15% {
+      opacity: 1;
+      transform: scale(1.2, 1.1);
+  }
+  40% {
+      transform: scale(0.95, 0.95);
+  }
+  75% {
+      transform: scale(1.05, 1);
+  }
+  100% {
+      transform: scale(1, 1);
+      opacity: 1;
+      
+  }
 }
 
 /* Form */

@@ -37,9 +37,9 @@ export default function QuizMenu({setSettings}) {
                         <h4>Are you up for the challenge?</h4>
                     </div>
                     <div className="question-example">
-                        <p className="question-block">{atob(question[randomID].question)}</p>
-                        <p className="question-block">{atob(question[randomID + 1].question)}</p>
-                        <p className="question-block">{atob(question[randomID + 2].question)}</p>
+                        <p className="question-block" id="question-b-1">{atob(question[randomID].question)}</p>
+                        <p className="question-block" id="question-b-2">{atob(question[randomID + 1].question)}</p>
+                        <p className="question-block" id="question-b-3">{atob(question[randomID + 2].question)}</p>
                     </div>
                 </section>
             </div>

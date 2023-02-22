@@ -23,6 +23,7 @@ export default function QuizGame({apiURL, setApiURL, setSettings, number, score,
         .then((data) => {
           setDataQuestions(data.results);
           setLoading(false);
+          console.log(dataQuestions);
         })
       }, []);
       
@@ -61,7 +62,7 @@ export default function QuizGame({apiURL, setApiURL, setSettings, number, score,
             setQuestionIndex(index);
             printAnswers(index);   
             setSelectedAnswer(false);
-          }, 0)
+          }, 2000)
         } else {
           console.log(answerBtn);
           //light up answers
@@ -75,7 +76,7 @@ export default function QuizGame({apiURL, setApiURL, setSettings, number, score,
             e.target.classList.remove('incorrect-answer');
             answerBtn.classList.remove("correct-answer");
             setSelectedAnswer(false);
-          }, 0)
+          }, 2000)
         }
       }
     
@@ -86,6 +87,7 @@ export default function QuizGame({apiURL, setApiURL, setSettings, number, score,
         setDataQuestions([]);
         setCorrectAnswerId(0);
         setQuestionIndex(0);
+        setSelectedAnswer(false);
         setApiURL(``);
         navigate('/');
       }
