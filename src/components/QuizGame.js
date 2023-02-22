@@ -11,8 +11,6 @@ export default function QuizGame({apiURL, setApiURL, setSettings, number, score,
   const [answerOptions, setAnswerOptions] = useState([]);
   const [correctAnswerId, setCorrectAnswerId] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(false);
-  
-    const answerBtn = document.getElementById(`answer-${correctAnswerId}`);
     
     //fetch Trivia API URL
     useEffect(() => {
@@ -64,6 +62,7 @@ export default function QuizGame({apiURL, setApiURL, setSettings, number, score,
             setSelectedAnswer(false);
           }, 2000)
         } else {
+          const answerBtn = document.getElementById(`answer-${correctAnswerId}`);
           console.log(answerBtn);
           //light up answers
           e.target.classList.add('incorrect-answer');
