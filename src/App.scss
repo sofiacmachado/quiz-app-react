@@ -1,0 +1,333 @@
+@import './styles/variables';
+@import './styles/mixins';
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+/* Quiz Menu */
+
+.container {
+  margin-top: 100px;
+}
+
+/* Hero Section */
+.hero-section {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 330px;
+}
+
+.hero-text {
+  display: grid;
+  justify-content: left;
+  position:relative;
+  top: 25%;
+  left: 10%;
+  color: $text-color-light;
+}
+
+.hero-text, h5, button {
+  font-family: $text-font;
+}
+
+.hero-text h5 {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  display: inline-grid;
+  justify-content: center;
+}
+
+.hero-text h1 {
+  font-family: $title-font;
+  font-size: 3rem;
+  margin-bottom: 1.8rem;
+  display: inline-grid;
+  justify-content: center;
+}
+
+.btn-quiz {
+  color: $emphasis-blue;
+  background-color: $background-color;
+  border-radius: 25px;
+  border: none;
+  display: inline-grid;
+  justify-self: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.btn-quiz:hover {
+  color: $text-color-light;
+  background-color: $emphasis-blue;
+}
+
+/* Question Example Section */
+
+
+.example-section {
+  height: 330px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.text-example {
+  text-align: center;
+  font-family: $text-font;
+  color: $emphasis-blue;
+}
+
+.text-example h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.text-example h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 3rem;
+}
+
+.question-example {
+  display: flex;
+  justify-content: space-around;
+}
+
+.question-block {
+  background-color: $emphasis-red;
+  color: $text-color-light;
+  font-family: $text-font;
+  font-weight: 500;
+  padding: 1rem;
+  width: 280px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  animation: boing 950ms ease-in-out forwards;
+}
+#question-b-1 {
+  animation-delay: 1250ms;
+}
+#question-b-2 {
+  animation-delay: 1600ms;
+}
+#question-b-3 {
+  animation-delay: 1450ms;
+}
+
+@keyframes boing {
+  15%, 40%, 75%, 100% {
+      transform-origin: center center;
+  }
+  15% {
+      opacity: 1;
+      transform: scale(1.2, 1.1);
+  }
+  40% {
+      transform: scale(0.95, 0.95);
+  }
+  75% {
+      transform: scale(1.05, 1);
+  }
+  100% {
+      transform: scale(1, 1);
+      opacity: 1;
+      
+  }
+}
+.text-example h2 {
+  opacity: 0;
+  animation: appear 600ms ease-in 400ms forwards;
+}
+
+.text-example h4 {
+  opacity: 0;
+  animation: appear 500ms ease-in 3s forwards;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Form */
+
+.api-form {
+  background-color: $emphasis-red;
+  padding: 5rem;
+  display: grid;
+  justify-content: center;
+}
+
+.api-form h2 {
+  color: $text-color-light;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.form-group, label {
+  font-family: $text-font;
+  color: $text-color-light;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-group:last-of-type {
+  margin-bottom: 3rem;
+}
+
+.form-control:focus {
+  border-color: $background-color;
+  box-shadow: 0 0 0 .2rem rgba(253, 228, 173, 0.493);
+}
+
+
+/* Question */
+
+.question-game,
+.final-page {
+  padding: 5rem;
+  background-color: $emphasis-red;
+  font-family: $text-font;
+  text-align: center;
+}
+
+.question-game h5 {
+  font-family: $title-font;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: $emphasis-blue;
+}
+
+.question-game h4 {
+  font-family: $text-font;
+  margin-bottom: 2.5rem;
+  color: $text-color-light;
+  font-weight: 600;
+  font-size: 1.7rem;
+}
+
+.answers-list {
+  list-style: none;
+  margin-bottom: 2rem;
+  padding-left: 0;
+}
+
+.btn-answers {
+  width: 300px;
+  margin-bottom: 0.8rem;
+  background-color: $background-color;
+  border: none;
+  border-radius: 25px;
+}
+
+.score {
+  font-size: 2.5rem;
+  color: $emphasis-blue;
+  font-weight: 200;
+  font-family: $title-font;
+}
+
+.correct-answer.btn {
+  background-color: green;
+  color: $text-color-light;
+}
+.incorrect-answer.btn {
+  background-color: rgb(216, 35, 35);
+  color: $text-color-light;
+}
+
+.btn.btn-answers:hover {
+  border-color: $background-color;
+  box-shadow: 0 0 0 .2rem rgba(253, 228, 173, 0.493);
+}
+
+.btn.btn-answers {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.btn.correct-answer:hover {
+  background-color: green;
+  color: $text-color-light;
+  box-shadow: none;
+}
+.btn.incorrect-answer:hover {
+  background-color: rgb(216, 35, 35);
+  color: $text-color-light;
+  box-shadow: none;
+}
+
+/* Final Page */
+
+.final-page h2 {
+  font-family: $text-font;
+  margin-bottom: 2.5rem;
+  color: $text-color-light;
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+
+.final-score {
+  color: $emphasis-blue;
+  font-family: $title-font;
+  padding-bottom: 4rem;
+  padding-top: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.score-h3 {
+  font-size: 4rem;
+}
