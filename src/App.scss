@@ -145,16 +145,16 @@
   align-items: center;
   text-align: center;
   opacity: 0;
-  animation: boing 750ms ease-in-out forwards;
+  animation: boing 950ms ease-in-out forwards;
 }
 #question-b-1 {
-  animation-delay: 550ms;
+  animation-delay: 1250ms;
 }
 #question-b-2 {
-  animation-delay: 500ms;
+  animation-delay: 1600ms;
 }
 #question-b-3 {
-  animation-delay: 650ms;
+  animation-delay: 1450ms;
 }
 
 @keyframes boing {
@@ -175,6 +175,24 @@
       transform: scale(1, 1);
       opacity: 1;
       
+  }
+}
+.text-example h2 {
+  opacity: 0;
+  animation: appear 600ms ease-in 400ms forwards;
+}
+
+.text-example h4 {
+  opacity: 0;
+  animation: appear 500ms ease-in 3s forwards;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
